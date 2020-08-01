@@ -29,9 +29,9 @@ public class ExampleController {
 		 return "Post successful with name: "+name ;
 	 }
 	 
-	 @RequestMapping(value = "/status-metric", method = RequestMethod.GET)
+	 @RequestMapping(value = "/metric", method = RequestMethod.GET)
 	 @ResponseBody
-	 public Map getStatusMetric() {
-	     return metricService.getStatusMetric();
+	 public Map getMetric() {
+	     return metricService.getFullMetric();
 	 }
 }
