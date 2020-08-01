@@ -1,5 +1,8 @@
-package com.example.controllers;
+package com.example.demo;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ExampleController {
-	 @RequestMapping("/")
+ 
+	@Autowired
+	private MetricService metricService;
+	
+	 @RequestMapping("/api")
 	   @ResponseBody
 	   public String hello() {
 	      return "Hello Spring Boot";
@@ -20,5 +27,11 @@ public class ExampleController {
 	 public String postMessage(@RequestBody String name)
 	 {
 		 return "Post successful with name: "+name ;
+	 }
+	 
+	 @RequestMapping(value = "/status-metric", method = RequestMethod.GET)
+	 @ResponseBody
+	 public Map getStatusMetric() {
+	     return metricService.getStatusMetric();
 	 }
 }
